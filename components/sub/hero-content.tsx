@@ -37,12 +37,12 @@ export const HeroContent = () => {
           className="flex flex-col gap-6 mt-6 text-7xl font-bold text-white max-w-[620px] w-auto h-auto"
         >
           <span>
-            Hi, I'm
+            {"Hi, I'm"}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              {" "}
-              Pronoy pal{" "}
+              {" "}Pronoy pal{" "}
             </span>
           </span>
+
         </motion.div>
 
         <motion.div
@@ -72,7 +72,7 @@ export const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[600px]"
         >
-          Providing the best project experience.And I&apos;m always ready to take on new challenges. Passionate about creating innovative and user-friendly solutions.
+          Providing the best project experience.And I m always ready to take on new challenges. Passionate about creating innovative and user-friendly solutions.
         </motion.p>
 
         <motion.div
