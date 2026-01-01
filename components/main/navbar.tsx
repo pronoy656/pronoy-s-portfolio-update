@@ -26,7 +26,7 @@ export const Navbar = () => {
             draggable={false}
             className="cursor-pointer"
           />
-          <div className="hidden md:flex md:selffont-bold ml-[10px] text-gray-300">Pronoy pal</div>
+          <div className="hidden md:flex font-bold ml-[10px] text-white tracking-widest text-lg uppercase">PRONOY PAL</div>
         </Link>
 
         {/* Web Navbar */}
@@ -57,7 +57,7 @@ export const Navbar = () => {
             </Link>
           ))}
           <Link
-            href="mailto:contact@example.com"
+            href="mailto:pronoypaul56@gmail.com"
             className="flex items-center gap-2 px-4 py-1 rounded-full text-white border border-[#7042f88b] bg-[rgba(112,66,248,0.38)] hover:bg-[#7042f8] transition duration-300 ease-in-out cursor-pointer"
           >
             <SiGmail />

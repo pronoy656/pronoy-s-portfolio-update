@@ -15,7 +15,7 @@ export const Encryption = () => {
           muted
           autoPlay
           playsInline
-          preload="false"
+          preload="auto"
           className="w-full h-full object-cover opacity-60"
         >
           <source src="/videos/blackhole.webm" type="video/webm" />

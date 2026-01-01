@@ -34,12 +34,12 @@ export const HeroContent = () => {
 
         <motion.div
           variants={slideInFromLeft(0.5)}
-          className="flex flex-col gap-6 mt-6 text-7xl font-bold text-white max-w-[620px] w-auto h-auto"
+          className="flex flex-col gap-6 mt-6 text-6xl font-bold text-white max-w-[680px] h-auto"
         >
           <span>
             {"Hi, I'm"}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
-              {" "}Pronoy pal{" "}
+              {" "}PRONOY PAL{" "}
             </span>
           </span>
 
@@ -85,7 +85,7 @@ export const HeroContent = () => {
           <a href="https://github.com/pronoy656" target="_blank" rel="noreferrer" className="text-white hover:text-[#7042f8] transition duration-300">
             <RxGithubLogo className="w-8 h-8" />
           </a>
-          <a href="mailto:contact@example.com" className="text-white hover:text-[#7042f8] transition duration-300">
+          <a href="mailto:pronoypaul56@gmail.com" className="text-white hover:text-[#7042f8] transition duration-300">
             <SiGmail className="w-8 h-8" />
           </a>
           <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-white hover:text-[#7042f8] transition duration-300">
@@ -101,8 +101,8 @@ export const HeroContent = () => {
           className="flex gap-5"
         >
           <a
-            href="mailto:contact@example.com"
-            className="flex items-center gap-2 py-2 px-6 button-primary text-center text-white cursor-pointer rounded-lg hover:brightness-110 transition duration-300"
+            href="mailto:pronoypaul56@gmail.com"
+            className="flex items-center gap-2 py-3 px-8 button-primary text-center text-white cursor-pointer rounded-xl hover:brightness-110 transition duration-300 shadow-[0_0_20px_rgba(168,85,247,0.4)] backdrop-blur-md"
           >
             Hire Me
             <RxPerson className="w-5 h-5" />
@@ -110,7 +110,7 @@ export const HeroContent = () => {
           <a
             href="/resume.pdf"
             download
-            className="flex items-center gap-2 py-2 px-6 border border-[#7042f88b] bg-[rgba(112,66,248,0.38)] text-center text-white cursor-pointer rounded-lg hover:bg-[#7042f8] transition duration-300"
+            className="flex items-center gap-2 py-3 px-8 border border-[#7042f88b] bg-[rgba(112,66,248,0.15)] text-center text-white cursor-pointer rounded-xl hover:bg-[rgba(112,66,248,0.3)] transition duration-300 backdrop-blur-md"
           >
             Download Resume
             <RxDownload className="w-5 h-5" />
@@ -136,9 +136,9 @@ export const HeroContent = () => {
         variants={slideInFromTop}
         className="absolute -bottom-20 w-full flex justify-center items-center z-[20] cursor-pointer"
       >
-        <div className="flex flex-col items-center bg-[rgba(15,10,36,0.5)]">
-          <span className="text-white  mb-2">Scroll Down</span>
-          <RxChevronDown className="text-white w-6 h-8 animate-bounce" />
+        <div className="flex flex-col items-center bg-[rgba(15,10,36,0.4)] px-6 py-4 rounded-full border border-white/10 backdrop-blur-sm">
+          <span className="text-white/60 text-xs tracking-widest uppercase mb-2">Scroll Down</span>
+          <RxChevronDown className="text-purple-500 w-6 h-6 animate-bounce" />
         </div>
       </motion.div>
     </motion.div>

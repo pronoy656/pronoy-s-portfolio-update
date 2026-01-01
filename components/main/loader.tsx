@@ -13,12 +13,13 @@ export const Loader = () => {
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(interval);
-                    setTimeout(() => setIsVisible(false), 500);
+                    setTimeout(() => setIsVisible(false), 300); // Shorter exit time
                     return 100;
                 }
-                return prev + 1;
+                const increment = Math.random() > 0.8 ? 5 : 2; // Faster, dynamic increment
+                return Math.min(prev + increment, 100);
             });
-        }, 30);
+        }, 20); // Faster interval
 
         return () => clearInterval(interval);
     }, []);
@@ -28,94 +29,100 @@ export const Loader = () => {
             {isVisible && (
                 <motion.div
                     initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, scale: 1.1 }}
+                    exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
                     transition={{ duration: 0.8, ease: "easeInOut" }}
                     className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#030014] overflow-hidden"
                 >
-                    {/* Background Video or Image for Space Vibe */}
+                    {/* High-energy background video */}
                     <video
                         autoPlay
                         muted
                         loop
-                        className="absolute inset-0 h-full w-full object-cover opacity-50"
+                        playsInline
+                        className="absolute inset-0 h-full w-full object-cover opacity-80 mix-blend-screen"
                     >
                         <source src="/videos/blackhole.webm" type="video/webm" />
                     </video>
 
+                    {/* Glowing radial gradient for center focus */}
+                    <div className="absolute inset-0 bg-radial-gradient from-purple-500/20 via-transparent to-transparent" />
+
                     {/* Grainy overlay for a premium feel */}
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 pointer-events-none"></div>
 
                     <div className="relative z-10 flex flex-col items-center">
-                        {/* Logo or Icon */}
+                        {/* Logo with intense outer glow */}
                         <motion.div
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.2, duration: 0.8 }}
-                            className="mb-8"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            className="mb-12 relative"
                         >
+                            <div className="absolute inset-0 blur-[30px] bg-purple-500/50 rounded-full animate-pulse" />
                             <Image
                                 src="/logo.png"
                                 alt="Logo"
-                                width={100}
-                                height={100}
-                                className="w-24 h-24 drop-shadow-[0_0_15px_rgba(112,0,255,0.8)]"
+                                width={120}
+                                height={120}
+                                className="w-28 h-28 relative drop-shadow-[0_0_20px_rgba(112,0,255,1)]"
                             />
                         </motion.div>
 
-                        {/* Title */}
-                        <motion.h1
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.4, duration: 0.8 }}
-                            className="text-white text-3xl font-bold tracking-widest mb-2 font-inter"
-                        >
-                            INITIALIZING SYSTEMS
-                        </motion.h1>
+                        {/* Premium typography */}
+                        <div className="flex flex-col items-center gap-2">
+                            <motion.h1
+                                initial={{ letterSpacing: "0.5em", opacity: 0 }}
+                                animate={{ letterSpacing: "0.2em", opacity: 1 }}
+                                transition={{ duration: 0.8 }}
+                                className="text-white text-4xl font-black tracking-[0.2em] mb-2 font-inter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40"
+                            >
+                                SYSTEM BOOT
+                            </motion.h1>
 
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.6 }}
-                            transition={{ delay: 0.6, duration: 1 }}
-                            className="text-white/60 text-sm mb-12 tracking-[0.3em] font-light"
-                        >
-                            ESTABLISHING UPLINK...
-                        </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.4 }}
+                                transition={{ delay: 0.4, duration: 1 }}
+                                className="text-white text-[10px] mb-12 tracking-[0.5em] font-light uppercase"
+                            >
+                                Establishing Secure Deep-Space Link
+                            </motion.p>
+                        </div>
 
-                        {/* Progress Bar Container */}
-                        <div className="w-64 h-[2px] bg-white/10 rounded-full overflow-hidden relative border border-white/5 box-content p-[1px]">
-                            {/* Inner Progress */}
+                        {/* Refined Progress Bar */}
+                        <div className="w-72 h-[1px] bg-white/5 rounded-full overflow-hidden relative border border-white/10 box-content p-[2px] backdrop-blur-xl">
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: `${progress}%` }}
-                                className="h-full bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+                                className="h-full bg-gradient-to-r from-purple-600 via-cyan-400 to-purple-600 shadow-[0_0_15px_rgba(168,85,247,0.8)]"
                             />
-                            {/* Glow effect */}
+                            {/* Scanning beam effect */}
                             <motion.div
                                 animate={{
-                                    left: [`${progress - 10}%`, `${progress}%`],
-                                    opacity: [0, 1, 0]
+                                    left: ["-100%", "100%"]
                                 }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
-                                className="absolute top-0 bottom-0 w-8 bg-white/20 blur-sm"
+                                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                className="absolute top-0 bottom-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent"
                             />
                         </div>
 
-                        {/* Percentage */}
-                        <motion.span
-                            key={progress}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="mt-4 text-white/80 font-mono text-sm tracking-widest"
-                        >
-                            {progress}%
-                        </motion.span>
+                        {/* Progress Percentage with Mono Font */}
+                        <div className="mt-8 flex items-baseline gap-2">
+                            <motion.span
+                                key={progress}
+                                className="text-white font-mono text-2xl font-bold tracking-tighter"
+                            >
+                                {progress.toString().padStart(3, '0')}
+                            </motion.span>
+                            <span className="text-white/40 font-mono text-sm tracking-widest">%</span>
+                        </div>
                     </div>
 
-                    {/* Decorative Corner Elements */}
-                    <div className="absolute top-10 left-10 w-20 h-20 border-t-2 border-l-2 border-purple-500/30"></div>
-                    <div className="absolute top-10 right-10 w-20 h-20 border-t-2 border-r-2 border-purple-500/30"></div>
-                    <div className="absolute bottom-10 left-10 w-20 h-20 border-b-2 border-l-2 border-purple-500/30"></div>
-                    <div className="absolute bottom-10 right-10 w-20 h-20 border-b-2 border-r-2 border-purple-500/30"></div>
+                    {/* Technical HUD borders */}
+                    <div className="absolute top-8 left-8 w-24 h-24 border-t border-l border-purple-500/40 rounded-tl-2xl"></div>
+                    <div className="absolute top-8 right-8 w-24 h-24 border-t border-r border-purple-500/40 rounded-tr-2xl"></div>
+                    <div className="absolute bottom-8 left-8 w-24 h-24 border-b border-l border-purple-500/40 rounded-bl-2xl"></div>
+                    <div className="absolute bottom-8 right-8 w-24 h-24 border-b border-r border-purple-500/40 rounded-br-2xl"></div>
                 </motion.div>
             )}
         </AnimatePresence>

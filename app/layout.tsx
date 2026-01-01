@@ -19,6 +19,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = siteConfig;
 
+import { SmoothScrolling } from "@/components/main/smooth-scrolling";
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
@@ -28,11 +30,13 @@ export default function RootLayout({ children }: PropsWithChildren) {
           inter.className
         )}
       >
-        <Loader />
-        <StarsCanvas />
-        <Navbar />
-        {children}
-        <Footer />
+        <SmoothScrolling>
+          <Loader />
+          <StarsCanvas />
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScrolling>
       </body>
     </html>
   );
